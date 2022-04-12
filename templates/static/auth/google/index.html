@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cognito</title>
+    <meta charset="utf-8">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+  </head>
+
+  <body id="root">
+    <article>
+      <div id="g_id_onload"
+           data-client_id="%AUTH_ISSUER_CLIENT_ID%"
+           data-login_uri="%LOGIN_CALLBACK_URL%"
+           data-auto_prompt="false">
+      </div>
+      <div class="g_id_signin"
+           data-type="standard"
+           data-size="large"
+           data-theme="outline"
+           data-text="sign_in_with"
+           data-shape="rectangular"
+           data-logo_alignment="left">
+      </div>
+    </article>
+    <script>
+      const onloadElement = document.getElementById('g_id_onload')
+      onloadElement.setAttribute('data-login_uri', `https://${location.host}/auth/callback?return_path=${location.pathname}`)
+    </script>
+  </body>
+</html>

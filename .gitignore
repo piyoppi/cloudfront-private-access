@@ -1,0 +1,7 @@
+template.yml
+node_modules/
+samconfig.toml
+config/
+.aws-sam/
+.generated
+.env

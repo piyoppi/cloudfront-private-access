@@ -1,0 +1,16 @@
+{
+  "name": "test-cognito",
+  "version": "0.1.0",
+  "description": "",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "piyoppi",
+  "license": "MIT",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.67.0",
+    "dotenv": "^16.0.0",
+    "google-auth-library": "^7.14.1"
+  }
+}
