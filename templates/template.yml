@@ -1,0 +1,46 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  cloudfront-private-access
+
+Resources:
+  SignInHandler:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: functions/
+      Handler: signin.signInHandler
+      Runtime: nodejs14.x
+      AutoPublishAlias: signin
+      AssumeRolePolicyDocument: {"Version":"2012-10-17","Statement":[{"Effect":"Allow","Principal":{"Service":["edgelambda.amazonaws.com","lambda.amazonaws.com"]},"Action":"sts:AssumeRole"}]}
+      Policies:
+        - S3ReadPolicy:
+            BucketName: %CONFIG_BUCKET_NAME%
+    Metadata:
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Sourcemap: false
+        Target: "es2020"
+
+  StaticPageBucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: %STATIC_PAGE_BUCKET_NAME%
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: True
+        BlockPublicPolicy: True
+        IgnorePublicAcls: True
+        RestrictPublicBuckets: True
+  ConfigBucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: %CONFIG_BUCKET_NAME%
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: True
+        BlockPublicPolicy: True
+        IgnorePublicAcls: True
+        RestrictPublicBuckets: True
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+           - ServerSideEncryptionByDefault:
+               SSEAlgorithm: 'AES256'

@@ -4,4 +4,6 @@ samconfig.toml
 config/
 .aws-sam/
 .generated
+!templates/*
+!templates/**/.generated
 .env

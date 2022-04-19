@@ -1,0 +1,8 @@
+{
+  "keyPairId": "",
+  "cloudFrontUrl": "https://xxxxxxxxx.cloudfront.net",
+  "authIssuerClientId": "xxxxxxxx",
+  "uid": [
+    "account@example.com"
+  ]
+}
