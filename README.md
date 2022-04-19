@@ -14,13 +14,7 @@ Set up with the following commands.
 ./bin/setup.sh -b <bucket-name-prefix>
 ```
 
-Build with the following command. To set parameters, run with --guided options for the first time.
-
-```sh
-sam build --guided --beta-features
-```
-
-If the `samconfig.toml` file exists, it can be build with the following command.
+Build with the following command.
 
 ```sh
 sam build --beta-features
@@ -30,6 +24,14 @@ Deploy with the following command.
 
 - Two buckets (<bucket-name-prefix>-config, <bucket-name-prefix>-staticpage will be created.
 - A lambda function is created.
+
+ To set parameters, run with --guided options for the first time.
+
+```sh
+sam deploy --guided
+```
+
+If the `samconfig.toml` file exists, it can be build with the following command.
 
 ```sh
 sam deploy
