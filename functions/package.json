@@ -1,5 +1,5 @@
 {
-  "name": "test-cognito",
+  "name": "@piyoppi/cloudfront-private-access-lambda-function",
   "version": "0.1.0",
   "description": "",
   "scripts": {
